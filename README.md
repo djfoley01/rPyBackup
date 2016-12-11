@@ -2,7 +2,7 @@
 
 ### Usage:
 client_cli.py -o \[option\] -f \[filename\]
-1. Available Options:
+ * Available Options:
  * run - Run Backup using configuration \(Not completely implemented yet\)
  * put - send file
  * get - retrieves file
