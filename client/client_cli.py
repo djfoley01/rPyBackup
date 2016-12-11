@@ -129,7 +129,6 @@ def run_configured_backup(clientname):
     cmd = clientname + " put " + output_fname
     print cmd
 
-#msg = raw_input('Enter your name: ')
 Config = ConfigParser.ConfigParser()
 Config.read('config/config.ini')
 HOST = ConfigSectionMap("main")['server']
