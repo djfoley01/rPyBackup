@@ -1,24 +1,24 @@
 rPyBackup 
 
-config_gui - Intentions are to run cross platform, windows currently functional
-				However requires windows libraries and I still need to seperate functions based on OS type
-		   - requires packages / libraries in 'client/additional-python-packages'
+config_gui 
+ - Intentions are to run cross platform, windows currently functional. however requires windows libraries and I still need to seperate functions based on OS type
+ - requires packages / libraries in 'client/additional-python-packages'
 
-client_cli - Right now the 'run' option does not upload the file, but it does create the compressed tar file
-		   - The send / receive speeds depend almost entirely on the buffer size during receiving
-		   - To tune transfer speeds, modify the buffer size in the 'get' function in client_cli.py (data = socket1.recv(8192)) and the 
-		   	 'put' function in server.py (data = clientsocket.recv(8192))  
-		   	 	- 1048576 is 1k best for large files 1g+
-		   	 	- 524288 is for 500 bytes good for medium to large files
-		   - Client hashes the file before transfer and sends hash to server, once server receives whole 
-		     file it hashes again then compares to ensure success
+client_cli 
+- Right now the 'run' option does not upload the file, but it does create the compressed tar file
+- The send / receive speeds depend almost entirely on the buffer size during receiving
+- To tune transfer speeds, modify the buffer size in the 'get' function in client_cli.py (data = socket1.recv(8192)) and the 'put' function in server.py (data = clientsocket.recv(8192))  
+ - 1048576 is 1k best for large files 1g+
+ - 524288 is for 500 bytes good for medium to large files
+- Client hashes the file before transfer and sends hash to server, once server receives whole file it hashes again then compares to ensure success
 		     
-server     - Server accepts all connections with correct initial message being sent
-		   		- will update it's config file with client information for retention period 
-		   		  (actual pruning not implemented yet), hostname and password
-		   			- will not allow a client with different hostname / password to access other clients data
-		   - Server is multi-threaded and will spawn new threads to allow for multiple client connections
-		   - Similar to the client_cli, the server hashes files before and after sending or receiving to ensure successful transfers
+server     
+- Server accepts all connections with correct initial message being sent
+- will update it's config file with client information for retention period 
+  (actual pruning not implemented yet), hostname and password
+- will not allow a client with different hostname / password to access other clients data
+- Server is multi-threaded and will spawn new threads to allow for multiple client connections
+- Similar to the client_cli, the server hashes files before and after sending or receiving to ensure successful transfers
 
 TODO config_gui:
  - seperate functions based on OS Type, only load necessary libraries based on OS
@@ -48,4 +48,4 @@ TODO server:
   - Configure logging for client and server
   
 
-  Project By: Daniel Foley <daniel@foley.life>
+Project By: Daniel Foley <daniel@foley.life>
