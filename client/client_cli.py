@@ -110,6 +110,7 @@ def remote_list(clientname):
     socket1 = ssl.wrap_socket(s,ca_certs='config/sslcerts/server.crt',cert_reqs=ssl.CERT_REQUIRED)
     socket1.connect((HOST, PORT))
     send_one_message(socket1, retrieve_config())
+    print "Remote Files:"
     commandName = clientname + " ls nofile"
     send_one_message(socket1, commandName)
     rlist = recv_one_message(socket1)

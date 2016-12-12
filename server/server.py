@@ -5,11 +5,12 @@ import os
 import struct
 import ConfigParser
 import hashlib
-import time, schedule
+import time
+#import schedule
 from datetime import datetime
 from OpenSSL import crypto
 from time import sleep
-HOST = 'localhost'                 
+HOST = '0.0.0.0'                 
 PORT = 3820
 
 logging.basicConfig(filename='rPyBackup.log', level=logging.INFO, format='%(asctime)s %(message)s')
@@ -20,7 +21,7 @@ socket.bind((HOST, PORT))
 
 def server_runtime():
     while True:
-        schedule.run_pending()
+        #schedule.run_pending()
         sleep(1)
 
 def server_checks():
@@ -51,11 +52,11 @@ def prune_files():
         confread = directory + ".rete"
         retention_period = ConfigSectionMap("clients")[confread]
 #        print directory + " retention: " + retention_period
-        full_path = os.getcwd() + "/" + directory
+        full_path = os.getcwd() + "/data/" + directory
         for f in os.listdir(full_path):
 #            print f + " " + str(os.stat(os.path.join(full_path,f)).st_mtime)
             if os.stat(os.path.join(full_path,f)).st_mtime < now - int(retention_period) * 86400:
-                file_path = directory + "/" + f
+                file_path = "data/" + directory + "/" + f
                 if os.path.isfile(file_path):
                     os.remove(file_path)
                     logging.info(file_path + " file removed; Older than " + retention_period)
@@ -164,7 +165,7 @@ def on_new_client(socketc,addr):
         pass
     else:
         string = reqCommand.split(' ', 2)   #in case of 'put' and 'get' method
-        reqFile = client_path + "/" + string[2] 
+        reqFile = "data/" + client_path + "/" + string[2] 
         ensure_dir(reqFile)
         if (string[1] == 'put'):
             inc_file_hash = recv_one_message(clientsocket)
@@ -203,7 +204,7 @@ def on_new_client(socketc,addr):
             logging.info("Client: " + client_path + " download confirm: " + recv_one_message(clientsocket))
         elif (string[1] == 'ls'):
             logging.info("Client: " + client_path + " sending file list")
-            full_path = os.getcwd() + "/" + client_path
+            full_path = os.getcwd() + "/data/" + client_path
             listdir = '\n'.join(os.listdir(full_path))
             send_one_message(clientsocket, listdir)
         
