@@ -317,6 +317,7 @@ class backup_gui(Tk):
 #            f.close()
         
     def save_config(self):
+#        password = hashlib.md5(self.config_password.get()).digest().encode("base64")[:-10]
         cfgfile = open('config/config.ini', 'w')
         Config.set('main', 'server', self.config_server.get())
         Config.set('main', 'port', self.config_port.get())

@@ -97,10 +97,10 @@ def get(commandName):
     file_hash = hashfile(open(inputFile, 'rb'), hashlib.sha256())
     if inc_file_hash == file_hash:
         print "Receive Successfull - Hashes Match"
-        send_one_message(socket1, "From Client: Receive Success - Hashes Match")
+        send_one_message(socket1, "Receive Success - Hashes Match")
     else:
         print "Received Failed - Hashes Do Not Match"
-        send_one_message(socket1, "From Client: Receive Failed - Hashes Do Not Match")
+        send_one_message(socket1, "Receive Failed - Hashes Do Not Match")
     print 'GET Complete'
     socket1.close()
     return
