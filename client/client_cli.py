@@ -7,6 +7,7 @@ import os
 import hashlib
 import datetime
 import tarfile
+import time
 #HOST = 'localhost'    # server name goes in here
 #PORT = 3820
 def retrieve_config():
@@ -123,7 +124,29 @@ def make_tarfile(output_filename, source_dir_list):
         for source_dir in source_dir_list:
             tar.add(source_dir, arcname=os.path.basename(source_dir))
         tar.close()
+        
+def make_inctarfile(output_filename, source_dir_list, lastrun):
+    now = time.time()
+    out = tarfile.open(output_filename, mode='w:gz')
 
+    # start walk via all files to find changed since lastrun
+    for dir_to_backup in source_dir_list:
+        for root, dirs, files in  os.walk(dir_to_backup, followlinks=True):
+            for file in files:
+                file = os.path.join(root, file)
+                try:
+                    filemodtime = os.path.getmtime(file)
+                    if filemodtime > float(lastrun):
+                        if os.path.isfile(file):
+                            print('Adding file: %s...' % file)
+                            out.add(file)
+                            print('File modified: %s' % time.ctime(os.path.getmtime(file)))
+                except OSError as error:
+                    print('ERROR: %s' % error)
+
+    print 'Closing archive.'
+    out.close()
+    
 def delete_tarfile(filename):
     print filename
     if os.path.isfile(filename):
@@ -138,14 +161,33 @@ def delete_tarfile(filename):
 def run_configured_backup(clientname):
     data = [line.strip() for line in open("config/config_paths", 'r')]
     fname = clientname
-    fmt = "%Y-%m-%d_Backup_" + clientname + ".tar.gz"
+    fmt = "%Y-%m-%d_FullBackup_" + clientname + ".tar.gz"
     output_fname = datetime.datetime.now().strftime(fmt).format(fname)
     make_tarfile(output_fname, data)
     cmd = clientname + " put " + output_fname
     put(cmd)
     delete_tarfile(output_fname)
+    set_lastrun()
     
+def inc_backup(clientname):
+    data = [line.strip() for line in open("config/config_paths", 'r')]
+    fname = clientname
+    fmt = "%Y-%m-%d_IncrementalBackup_" + clientname + ".tar.gz"
+    output_fname = datetime.datetime.now().strftime(fmt).format(fname)
+    make_inctarfile(output_fname, data, lastrun)
+    cmd = clientname + " put " + output_fname
+    put(cmd)
+    delete_tarfile(output_fname)
+    set_lastrun()
+#    print('Creating archive %s...' % backupname)
 
+def set_lastrun():
+    now = time.time()
+    cfgfile = open('config/config.ini', 'w')
+    Config.set('main', 'lastrun', now)
+    Config.write(cfgfile)
+    cfgfile.close()
+    
 Config = ConfigParser.ConfigParser()
 Config.read('config/config.ini')
 HOST = ConfigSectionMap("main")['server']
@@ -153,6 +195,7 @@ PORT = int(ConfigSectionMap("main")['port'])
 clientname = ConfigSectionMap("main")['clientname']
 retention = ConfigSectionMap("main")['retention']
 password = ConfigSectionMap("main")['password']
+lastrun = ConfigSectionMap("main")['lastrun']
 
 def main(argv):
     opt_arg = ''
@@ -162,7 +205,8 @@ def main(argv):
     except getopt.GetoptError:
         print 'client_cli.py -o <option> -f <filename>'
         print 'Available Options: '
-        print 'run - Run Backup using configuration'
+        print 'run - Run Full Backup using configuration'
+        print 'run_inc - Run Incremental Backup using configuration'
         print 'put - send file'
         print 'get - retrieves file'
         print 'list - lists local directory'
@@ -172,7 +216,8 @@ def main(argv):
         if opt == '-h':
             print 'client_cli.py -o <option> -f <filename>'
             print 'Available Options:'
-            print 'run - Run Backup using configuration'
+            print 'run - Run Full Backup using configuration'
+            print 'run_inc - Run Incremental Backup using configuration'
             print 'put - send file'
             print 'get - retrieves file'
             print 'list - lists local directory'
@@ -196,6 +241,8 @@ def main(argv):
         remote_list(clientname)
     elif (string[0] == 'run'):
         run_configured_backup(clientname)
+    elif (string[0] == 'run_inc'):
+        inc_backup(clientname)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

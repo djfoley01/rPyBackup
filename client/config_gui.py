@@ -336,13 +336,16 @@ if __name__ == "__main__":
     ### OS Type Check - Now only Windows is configured ###
     # Issue / Bug during privilege escalation where two instances are spawned
     # Fix 
-    if ostype == 'Windows':
-        if not admin.isUserAdmin():
-            admin.runAsAdmin(wait=True)
-    else:
-        pass
+
     app = backup_gui(None)
     app.title('rPyBackup Configuration')
+    
+    if ostype == 'Windows':
+        if not admin.isUserAdmin():
+            admin.runAsAdmin(wait=False)
+            app.destroy()
+    else:
+        pass
     
     menu = Menu(app)
     app.config(menu=menu)

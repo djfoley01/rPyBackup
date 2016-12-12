@@ -29,6 +29,7 @@ client_cli.py -o \[option\] -f \[filename\]
 - will not allow a client with different hostname / password to access other clients data
 - Server is multi-threaded and will spawn new threads to allow for multiple client connections
 - Similar to the client_cli, the server hashes files before and after sending or receiving to ensure successful transfers
+- Logging has been added
 
 #### TODO config_gui:
  - seperate functions based on OS Type, only load necessary libraries based on OS
@@ -44,11 +45,10 @@ client_cli.py -o \[option\] -f \[filename\]
  
 #### TODO server:
  - Enable file pruning based on configured retention periods
- - Configure actual authentication to only allow connections from proper clients
+ - Configure actual authentication to only allow connections from proper clients, works using SSL, add additional?
  - Create management interface
  - Create start scripts for linux (systemd and init.d)
  - Eventually enable delta backups
- - Configure logging
  
 #### TODO all:
  - Create backup / restore gui
