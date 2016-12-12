@@ -14,13 +14,15 @@ client_cli.py -o \[option\] -f \[filename\]
  - requires packages / libraries in 'client/additional-python-packages'
 
 ### client_cli 
+- All socket connections are now encrypted with SSL 
 - The send / receive speeds depend almost entirely on the buffer size during receiving
 - To tune transfer speeds, modify the buffer size in the 'get' function in client_cli.py (data = socket1.recv(8192)) and the 'put' function in server.py (data = clientsocket.recv(8192))  
  - 1048576 is 1k best for large files 1g+
  - 524288 is for 500 bytes good for medium to large files
 - Client hashes the file before transfer and sends hash to server, once server receives whole file it hashes again then compares to ensure success
 		     
-### server     
+### server
+- All socket connections are now encrypted with SSL     
 - Server accepts all connections with correct initial message being sent
 - will update it's config file with client information for retention period 
   (actual pruning not implemented yet), hostname and password
@@ -41,7 +43,6 @@ client_cli.py -o \[option\] -f \[filename\]
  - Configure logging
  
 #### TODO server:
- - Encrypt socket connections
  - Enable file pruning based on configured retention periods
  - Configure actual authentication to only allow connections from proper clients
  - Create management interface

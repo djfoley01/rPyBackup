@@ -1,4 +1,4 @@
-import socket
+import socket, ssl
 import ConfigParser
 import sys
 import getopt
@@ -11,7 +11,7 @@ import tarfile
 #PORT = 3820
 def retrieve_config():
     server_string = clientname + " " + retention + " " + password
-    print "Sending Config.. " + clientname
+    print "Sending Config.. "
     return server_string
 
 def hashfile(afile, hasher, blocksize=65536):
@@ -55,7 +55,8 @@ def recvall(sock, count):
     return buf
 
 def put(commandName):
-    socket1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    socket1 = ssl.wrap_socket(s,ca_certs='config/sslcerts/server.crt',cert_reqs=ssl.CERT_REQUIRED)
     socket1.connect((HOST, PORT))
     send_one_message(socket1, retrieve_config())
     send_one_message(socket1, commandName)
@@ -74,7 +75,8 @@ def put(commandName):
 
 
 def get(commandName):
-    socket1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    socket1 = ssl.wrap_socket(s,ca_certs='config/sslcerts/server.crt',cert_reqs=ssl.CERT_REQUIRED)
     socket1.connect((HOST, PORT))
     send_one_message(socket1, retrieve_config())
     send_one_message(socket1, commandName)
@@ -104,7 +106,8 @@ def get(commandName):
     return
 
 def remote_list(clientname):
-    socket1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    socket1 = ssl.wrap_socket(s,ca_certs='config/sslcerts/server.crt',cert_reqs=ssl.CERT_REQUIRED)
     socket1.connect((HOST, PORT))
     send_one_message(socket1, retrieve_config())
     commandName = clientname + " ls nofile"

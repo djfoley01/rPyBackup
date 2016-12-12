@@ -95,7 +95,12 @@ def recvall(sock, count):
         count -= len(newbuf)
     return buf
 
-def on_new_client(clientsocket,addr):
+def on_new_client(socketc,addr):
+    try:
+        clientsocket = ssl.wrap_socket(socketc, server_side=True,certfile="sslcerts/server.crt",keyfile="sslcerts/server.key")
+    except:
+        socketc.close()
+        return
     print 'New client connected .. ', clientsocket
     auth_client_string = recv_one_message(clientsocket)
     client_path = auth_client(auth_client_string)
@@ -111,7 +116,7 @@ def on_new_client(clientsocket,addr):
         ensure_dir(reqFile)
         if (string[1] == 'put'):
             inc_file_hash = recv_one_message(clientsocket)
-            file_size = int(conn.recv(16))
+            file_size = int(clientsocket.recv(16))
             print 'File Size: ' + str(file_size)
             print "Incoming Hash:" + inc_file_hash
             recvd = ''
@@ -147,6 +152,7 @@ def on_new_client(clientsocket,addr):
             send_one_message(clientsocket, listdir)
         
     clientsocket.close()
+    socketc.close()
 
 socket.listen(5)
 while True:
