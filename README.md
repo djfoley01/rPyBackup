@@ -25,7 +25,7 @@ client_cli.py -o \[option\] -f \[filename\]
 - All socket connections are now encrypted with SSL     
 - Server accepts all connections with correct initial message being sent
 - will update it's config file with client information for retention period 
-  (actual pruning not implemented yet), hostname and password
+  (actual pruning not enabled yet), hostname and password
 - will not allow a client with different hostname / password to access other clients data
 - Server is multi-threaded and will spawn new threads to allow for multiple client connections
 - Similar to the client_cli, the server hashes files before and after sending or receiving to ensure successful transfers

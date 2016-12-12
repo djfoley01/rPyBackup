@@ -1,16 +1,54 @@
 import socket, ssl
 import thread
-#import sys
+#import logging
 import os
 import struct
 import ConfigParser
 import hashlib
+import time, schedule
+from datetime import datetime
+from OpenSSL import crypto
 HOST = 'localhost'                 
 PORT = 3820
+
+#schedule.every().day.at("01:00").do(prune_files)
 
 Config = ConfigParser.ConfigParser()
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.bind((HOST, PORT))
+
+def check_ssl_cert():
+    currentDate = datetime.utcnow()
+    cert = crypto.load_certificate(crypto.FILETYPE_PEM, file('sslcerts/server.crt').read())
+    expDate = datetime.strptime(cert.get_notAfter(),'%Y%m%d%H%M%SZ')
+    delta = expDate - currentDate
+    print "Expires in:" + str(delta.days)
+
+def prune_files():
+    now = time.time()
+    with open('config.ini', 'r') as fin:
+        lines=[]
+        for line in fin:
+            string = line.split(' ', 2)
+            if string[0].strip() != '[clients]':
+                if string[0].strip() != '':
+                    newline = string[0].strip()[:-5]
+                    lines.append(newline)
+    for directory in list(set(lines)):
+        Config.read('config.ini')
+        confread = directory + ".rete"
+        retention_period = ConfigSectionMap("clients")[confread]
+#        print directory + " retention: " + retention_period
+        full_path = os.getcwd() + "/" + directory
+        for f in os.listdir(full_path):
+#            print f + " " + str(os.stat(os.path.join(full_path,f)).st_mtime)
+            if os.stat(os.path.join(full_path,f)).st_mtime < now - int(retention_period) * 86400:
+                file_path = directory + "/" + f
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+                    print file_path + " file removed; Older than " + retention_period
+                else:
+                    print "Cound not find " + file_path + " to remove due to retention breach"
 
 def hashfile(afile, hasher, blocksize=65536):
     buf = afile.read(blocksize)
@@ -40,7 +78,7 @@ def ConfigSectionMap(section):
 def save_config(auth_string):
     string = auth_string.split(' ', 2)
     cli_clientname = string[0] + "." + string[2] + ".name"
-    cli_retention = string[0] + "." + string[2] + ".ret"
+    cli_retention = string[0] + "." + string[2] + ".rete"
     cli_password = string[0] + "." + string[2] + ".pass"
     cfgfile = open('config.ini', 'w')
     Config.set('clients', cli_clientname, string[0])
@@ -56,7 +94,7 @@ def save_config(auth_string):
 def auth_client(auth_string):
     string = auth_string.split(' ', 2)
     cli_clientname = string[0] + "." + string[2] + ".name"
-    cli_retention = string[0] + "." + string[2] + ".ret"
+    cli_retention = string[0] + "." + string[2] + ".rete"
     cli_password = string[0] + "." + string[2] + ".pass"
     Config.read('config.ini')
     try:
@@ -101,13 +139,13 @@ def on_new_client(socketc,addr):
     except:
         socketc.close()
         return
-    print 'New client connected .. ', clientsocket
+    print 'New client connected .. ', addr
     auth_client_string = recv_one_message(clientsocket)
-    client_path = auth_client(auth_client_string)
+    cpath = auth_client(auth_client_string)
+    client_path = cpath.strip()[:-5]
     reqCommand = recv_one_message(clientsocket)
     print 'Client> %s' %(reqCommand)
-    #elif (reqCommand == lls):
-        #list file in server directory
+
     if not reqCommand:
         pass
     else:
@@ -158,4 +196,5 @@ socket.listen(5)
 while True:
     conn, addr = socket.accept()
     thread.start_new_thread(on_new_client,(conn, addr))
+    #schedule.run_pending()
 socket.close()
