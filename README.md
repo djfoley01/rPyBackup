@@ -3,7 +3,7 @@
 ### Usage:
 client_cli.py -o \[option\] -f \[filename\]
  * Available Options:
- * run - Run Backup using configuration \(Not completely implemented yet\)
+ * run - Run Backup using configuration
  * put - send file
  * get - retrieves file
  * list - lists local directory
@@ -14,7 +14,6 @@ client_cli.py -o \[option\] -f \[filename\]
  - requires packages / libraries in 'client/additional-python-packages'
 
 ### client_cli 
-- Right now the 'run' option does not upload the file, but it does create the compressed tar file
 - The send / receive speeds depend almost entirely on the buffer size during receiving
 - To tune transfer speeds, modify the buffer size in the 'get' function in client_cli.py (data = socket1.recv(8192)) and the 'put' function in server.py (data = clientsocket.recv(8192))  
  - 1048576 is 1k best for large files 1g+
@@ -38,7 +37,6 @@ client_cli.py -o \[option\] -f \[filename\]
  - create hash of password to store in configuration file instead of plain text
 
 #### TODO client_cli:
- - Update run option to also transfer file
  - Make buffer size, auto scale for different file sizes to improve performance without modification to code
  - Configure logging
  

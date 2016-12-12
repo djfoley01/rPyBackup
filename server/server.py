@@ -1,4 +1,4 @@
-import socket
+import socket, ssl
 import thread
 #import sys
 import os

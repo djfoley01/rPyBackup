@@ -119,15 +119,28 @@ def make_tarfile(output_filename, source_dir_list):
         for source_dir in source_dir_list:
             tar.add(source_dir, arcname=os.path.basename(source_dir))
         tar.close()
+
+def delete_tarfile(filename):
+    print filename
+    if os.path.isfile(filename):
+        try:
+            os.remove(filename)
+            print "Successfully removed temporary file"
+        except:
+            print "Unable to delete temporary file"
+    else:
+        print "Temporary file not found"
         
 def run_configured_backup(clientname):
     data = [line.strip() for line in open("config/config_paths", 'r')]
     fname = clientname
-    fmt = "%Y-%m-%d-%H-%M-%S_Backup_" + clientname + ".tar.gz"
+    fmt = "%Y-%m-%d_Backup_" + clientname + ".tar.gz"
     output_fname = datetime.datetime.now().strftime(fmt).format(fname)
     make_tarfile(output_fname, data)
     cmd = clientname + " put " + output_fname
-    print cmd
+    put(cmd)
+    delete_tarfile(output_fname)
+    
 
 Config = ConfigParser.ConfigParser()
 Config.read('config/config.ini')
