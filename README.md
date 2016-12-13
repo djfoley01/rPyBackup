@@ -44,7 +44,7 @@ client_cli.py -o \[option\] -f \[filename\]
  - Configure logging
  
 #### TODO server:
- - Enable file pruning based on configured retention periods
+ - file pruning configured in seperate maintenance script
  - Configure actual authentication to only allow connections from proper clients, works using SSL, add additional?
  - Create management interface
  - Create start scripts for linux (systemd and init.d)
@@ -53,7 +53,6 @@ client_cli.py -o \[option\] -f \[filename\]
 #### TODO all:
  - Create backup / restore gui
  - Across the board I need to work on better exception handling
- - Configure logging for client and server
   
 
 Project By: Daniel Foley <daniel@foley.life>

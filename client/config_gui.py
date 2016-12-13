@@ -27,7 +27,7 @@ def query_windows_task():
 
 def create_windows_task(hour, minute):
     #wtask_create = subprocess.Popen(["SchTasks.exe", "/create", "/SC", "DAILY", "/TN", "rPyBackup", "/TR", "C:\rPyBackup\client_cli.py", "/ST", hour + ":" + minute, "/RU", "system", "/RL", "HIGHEST"], stdout=subprocess.PIPE).communicate()[0]
-    wtask_create = subprocess.Popen(["SchTasks.exe", "/create", "/SC", "DAILY", "/TN", "rPyBackup", "/TR", "C:\\rPyBackup\client_cli.py -o run", "/ST", hour + ":" + minute, "/RU", "system", "/RL", "HIGHEST"], stdout=subprocess.PIPE).communicate()[0]
+    wtask_create = subprocess.Popen(["SchTasks.exe", "/create", "/SC", "DAILY", "/TN", "rPyBackup", "/TR", "C:\\rPyBackup\run.bat", "/ST", hour + ":" + minute, "/RU", "system", "/RL", "HIGHEST"], stdout=subprocess.PIPE).communicate()[0]
     return wtask_create
 
 def modify_windows_task(hour, minute):
@@ -146,8 +146,9 @@ class backup_gui(Tk):
         # create the listbox (note that size is in characters)
         #task_list = Listbox(root, width=50, height=6)
         self.textPad = ScrolledText(self, width=100, height=30)
-        self.task_list = Listbox(self, width=50, height=6)
+        self.task_list = Listbox(self, width=50, height=8)
         self.task_list.grid(row=8, column=4)
+        self.config_blank_label = Label(self, text="").grid(column=10,row=5,sticky='EW')
 
         # create a vertical scrollbar to the right of the listbox
         self.yscroll = Scrollbar(command=self.task_list.yview, orient=VERTICAL)
@@ -193,7 +194,7 @@ class backup_gui(Tk):
         self.grid_columnconfigure(0,weight=1)
         self.resizable(True,True)
         self.update()
-        self.geometry(self.geometry())
+        self.geometry('{}x{}'.format(650, 375))
         self.config_name.focus_set()
         self.config_name.selection_range(0, END)
         
