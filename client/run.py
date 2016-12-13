@@ -1,0 +1,2 @@
+
+datetime.datetime.today().weekday()

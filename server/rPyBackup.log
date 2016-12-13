@@ -1,0 +1,119 @@
+INFO:root:New client connected .. ('127.0.0.1', 1392)
+INFO:root:Creating Client: hp-omen.domain.abcdefghij123456
+INFO:root:Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-11 22:33:49,243 New client connected .. ('127.0.0.1', 2047)
+2016-12-11 22:33:49,243 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-11 22:33:49,243 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-11 22:34:03,204 New client connected .. ('127.0.0.1', 2052)
+2016-12-11 22:34:03,206 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain put tmp.txt
+2016-12-11 22:34:03,206 Client: hp-omen.domain.abcdefghij123456 uploading file: tmp.txt
+2016-12-11 22:34:03,207 Client: hp-omen.domain.abcdefghij123456 received file hash: OòQóòÁ2ÖD…k6√–Ì˜ £25ùoÉVp
+2016-12-11 22:34:03,207 Client: hp-omen.domain.abcdefghij123456 confirmed file hash: OòQóòÁ2ÖD…k6√–Ì˜ £25ùoÉVp
+2016-12-11 22:34:03,207 Client: hp-omen.domain.abcdefghij123456 upload successful: tmp.txt
+2016-12-11 22:49:05,436 New client connected .. ('127.0.0.1', 2277)
+2016-12-11 22:49:05,437 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-11 22:49:05,437 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-11 22:49:05,437 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-11 22:50:57,951 New client connected .. ('127.0.0.1', 2308)
+2016-12-11 22:50:57,953 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-11 22:50:57,953 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-11 22:50:57,953 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-11 23:05:52,470 SSL Certificate Expires in:364
+2016-12-11 23:05:52,471 Prune Job Started
+2016-12-11 23:05:52,471 Prune Job Complete
+2016-12-11 23:16:00,365 Running job Every 1 day at 23:16:00 do server_checks() (last run: [never], next run: 2016-12-11 23:16:00)
+2016-12-11 23:16:00,377 SSL Certificate Expires in:364
+2016-12-11 23:16:00,377 Prune Job Started
+2016-12-11 23:16:00,380 Prune Job Complete
+2016-12-12 00:03:05,645 New client connected .. ('127.0.0.1', 3763)
+2016-12-12 00:03:05,647 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-12 00:03:05,647 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-12 00:03:05,648 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-12 00:03:59,525 New client connected .. ('127.0.0.1', 3779)
+2016-12-12 00:03:59,526 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-12 00:03:59,526 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-12 00:03:59,526 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-12 11:51:29,311 New client connected .. ('127.0.0.1', 8627)
+2016-12-12 11:51:29,312 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain put 2016-12-12_FullBackup_hp-omen.domain.tar.gz
+2016-12-12 11:51:29,313 Client: hp-omen.domain.abcdefghij123456 uploading file: 2016-12-12_FullBackup_hp-omen.domain.tar.gz
+2016-12-12 11:51:29,313 Client: hp-omen.domain.abcdefghij123456 received file hash: {ß	v=ˇ√∞4BwW¬∑„ª¨[“∑•Æm‰
+2016-12-12 11:51:29,315 Client: hp-omen.domain.abcdefghij123456 confirmed file hash: {ß	v=ˇ√∞4BwW¬∑„ª¨[“∑•Æm‰
+2016-12-12 11:51:29,315 Client: hp-omen.domain.abcdefghij123456 upload successful: 2016-12-12_FullBackup_hp-omen.domain.tar.gz
+2016-12-12 11:51:29,315 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-12 12:21:31,569 New client connected .. ('127.0.0.1', 7401)
+2016-12-12 12:21:31,572 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-12 12:21:31,572 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-12 12:21:31,572 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-12 12:21:35,680 New client connected .. ('127.0.0.1', 7407)
+2016-12-12 12:21:35,681 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain put 2016-12-12_IncrementalBackup_hp-omen.domain.tar.gz
+2016-12-12 12:21:35,683 Client: hp-omen.domain.abcdefghij123456 uploading file: 2016-12-12_IncrementalBackup_hp-omen.domain.tar.gz
+2016-12-12 12:21:35,683 Client: hp-omen.domain.abcdefghij123456 received file hash: &W∂«óß‘a*a_l˘í÷SÁŸÉÚ}èŒ˛4Ÿ∫ﬂ
+2016-12-12 12:21:35,684 Client: hp-omen.domain.abcdefghij123456 confirmed file hash: &W∂«óß‘a*a_l˘í÷SÁŸÉÚ}èŒ˛4Ÿ∫ﬂ
+2016-12-12 12:21:35,684 Client: hp-omen.domain.abcdefghij123456 upload successful: 2016-12-12_IncrementalBackup_hp-omen.domain.tar.gz
+2016-12-12 12:21:35,684 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-12 16:16:09,812 New client connected .. ('127.0.0.1', 23419)
+2016-12-12 16:16:09,813 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-12 16:16:09,815 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-12 16:16:09,815 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 13:56:35,285 New client connected .. ('127.0.0.1', 5873)
+2016-12-13 13:56:35,286 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 13:56:35,286 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 13:56:35,286 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 13:57:13,573 New client connected .. ('127.0.0.1', 5886)
+2016-12-13 13:57:13,575 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 13:57:13,575 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 13:57:13,575 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 13:58:34,292 New client connected .. ('127.0.0.1', 5919)
+2016-12-13 13:58:34,292 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain put tmp.txt
+2016-12-13 13:58:34,293 Client: hp-omen.domain.abcdefghij123456 uploading file: tmp.txt
+2016-12-13 13:58:34,293 Client: hp-omen.domain.abcdefghij123456 received file hash: OòQóòÁ2ÖD…k6√–Ì˜ £25ùoÉVp
+2016-12-13 13:58:34,295 Client: hp-omen.domain.abcdefghij123456 confirmed file hash: OòQóòÁ2ÖD…k6√–Ì˜ £25ùoÉVp
+2016-12-13 13:58:34,295 Client: hp-omen.domain.abcdefghij123456 upload successful: tmp.txt
+2016-12-13 13:58:34,295 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 13:58:42,019 New client connected .. ('127.0.0.1', 5922)
+2016-12-13 13:58:42,019 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 13:58:42,019 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 13:58:42,019 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 13:59:20,109 New client connected .. ('127.0.0.1', 6002)
+2016-12-13 13:59:20,111 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 13:59:20,111 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 13:59:20,111 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:00:22,278 New client connected .. ('127.0.0.1', 6024)
+2016-12-13 14:00:22,278 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 14:00:22,279 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 14:00:22,279 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:00:30,654 New client connected .. ('127.0.0.1', 6028)
+2016-12-13 14:00:30,654 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 14:00:30,654 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 14:00:30,654 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:00:54,440 New client connected .. ('127.0.0.1', 6035)
+2016-12-13 14:00:54,441 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 14:00:54,441 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 14:00:54,441 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:01:31,615 New client connected .. ('127.0.0.1', 6047)
+2016-12-13 14:01:31,615 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 14:01:31,615 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 14:01:31,615 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:01:54,203 New client connected .. ('127.0.0.1', 6065)
+2016-12-13 14:01:54,204 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain put config_gui.py
+2016-12-13 14:01:54,204 Client: hp-omen.domain.abcdefghij123456 uploading file: config_gui.py
+2016-12-13 14:01:54,204 Client: hp-omen.domain.abcdefghij123456 received file hash: y≠[B»1Èz‘Øk}AπÎA·èÿŒÅ≈≤¸#ª/ËÊÛ
+2016-12-13 14:01:54,206 Client: hp-omen.domain.abcdefghij123456 confirmed file hash: y≠[B»1Èz‘Øk}AπÎA·èÿŒÅ≈≤¸#ª/ËÊÛ
+2016-12-13 14:01:54,207 Client: hp-omen.domain.abcdefghij123456 upload successful: config_gui.py
+2016-12-13 14:01:54,207 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:01:59,595 New client connected .. ('127.0.0.1', 6067)
+2016-12-13 14:01:59,595 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 14:01:59,595 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 14:01:59,596 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:02:15,802 New client connected .. ('127.0.0.1', 6071)
+2016-12-13 14:02:15,802 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 14:02:15,802 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 14:02:15,803 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:02:34,654 New client connected .. ('127.0.0.1', 6077)
+2016-12-13 14:02:34,654 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 14:02:34,654 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 14:02:34,654 Client: hp-omen.domain.abcdefghij123456 Connection Closed
+2016-12-13 14:04:16,108 New client connected .. ('127.0.0.1', 6152)
+2016-12-13 14:04:16,108 Client: hp-omen.domain.abcdefghij123456 Command: hp-omen.domain ls nofile
+2016-12-13 14:04:16,108 Client: hp-omen.domain.abcdefghij123456 sending file list
+2016-12-13 14:04:16,109 Client: hp-omen.domain.abcdefghij123456 Connection Closed

@@ -1,0 +1,13 @@
+2016-12-12 16:15:24,046 SSL Certificate Expires in: 364days
+2016-12-12 16:15:24,046 Prune Job Started
+2016-12-12 16:16:29,802 SSL Certificate Expires in: 364days
+2016-12-12 16:16:29,802 Prune Job Started
+2016-12-12 16:16:29,802 Prune Job Complete
+2016-12-12 16:18:00,049 Running job Every 1 day at 16:18:00 do server_checks() (last run: [never], next run: 2016-12-12 16:18:00)
+2016-12-12 16:18:00,065 SSL Certificate Expires in: 364days
+2016-12-12 16:18:00,065 Prune Job Started
+2016-12-12 16:18:00,069 Prune Job Complete
+2016-12-12 16:20:00,937 Running job Every 1 day at 16:20:00 do server_checks() (last run: [never], next run: 2016-12-12 16:20:00)
+2016-12-12 16:20:00,947 SSL Certificate Expires in: 364days
+2016-12-12 16:20:00,948 Prune Job Started
+2016-12-12 16:20:00,950 Prune Job Complete
